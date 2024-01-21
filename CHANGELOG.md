@@ -1,3 +1,6 @@
+#### 1.0.2
+- Changes to how I register the items
+
 #### 1.0.1
 - Added terminal info for shotguns
 - Fixed bought shotguns only being visible on host
