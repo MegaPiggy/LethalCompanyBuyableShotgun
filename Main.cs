@@ -18,13 +18,13 @@ using Steamworks.Ugc;
 
 namespace BuyableShotgun
 {
-    [DefaultExecutionOrder(200)]
+    [BepInDependency("evaisa.lethallib", "0.13.2")]
     [BepInPlugin(modGUID, modName, modVersion)]
     public class BuyableShotgun : BaseUnityPlugin
     {
         private const string modGUID = "MegaPiggy.BuyableShotgun";
         private const string modName = "Buyable Shotgun";
-        private const string modVersion = "1.0.2";
+        private const string modVersion = "1.0.3";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -33,7 +33,7 @@ namespace BuyableShotgun
         private static ManualLogSource LoggerInstance => Instance.Logger;
 
         public List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Concat(UnityEngine.Object.FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID)).ToList();
-        public Item Shotgun => AllItems.FirstOrDefault(item => item.name == "Shotgun");
+        public Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun"));
         public Item ShotgunClone { get; private set; }
 
         private ConfigEntry<int> ShotgunPriceConfig;
@@ -81,14 +81,21 @@ namespace BuyableShotgun
             prefab.tag = "PhysicsProp";
             prefab.layer = LayerMask.NameToLayer("Props");
             cube.layer = LayerMask.NameToLayer("Props");
-            GameObject scanNode = GameObject.Instantiate<GameObject>(Items.scanNodePrefab, prefab.transform);
-            scanNode.name = "ScanNode";
-            scanNode.transform.localPosition = new Vector3(0f, 0f, 0f);
-            scanNode.transform.localScale *= 2;
-            ScanNodeProperties properties = scanNode.GetComponent<ScanNodeProperties>();
-            properties.nodeType = 1;
-            properties.headerText = "Error";
-            properties.subText = $"A mod is incompatible with {modName}";
+            try
+            {
+                GameObject scanNode = GameObject.Instantiate<GameObject>(Items.scanNodePrefab, prefab.transform);
+                scanNode.name = "ScanNode";
+                scanNode.transform.localPosition = new Vector3(0f, 0f, 0f);
+                scanNode.transform.localScale *= 2;
+                ScanNodeProperties properties = scanNode.GetComponent<ScanNodeProperties>();
+                properties.nodeType = 1;
+                properties.headerText = "Error";
+                properties.subText = $"A mod is incompatible with {modName}";
+            }
+            catch (Exception e)
+            {
+                LoggerInstance.LogError(e.ToString());
+            }
             prefab.transform.localScale = Vector3.one / 2;
             return nonScrap;
         }
