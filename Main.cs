@@ -24,7 +24,7 @@ namespace BuyableShotgun
     {
         private const string modGUID = "MegaPiggy.BuyableShotgun";
         private const string modName = "Buyable Shotgun";
-        private const string modVersion = "1.0.3";
+        private const string modVersion = "1.0.4";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
