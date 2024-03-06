@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System;
 using Steamworks.Ugc;
+using NetworkPrefabs = LethalLib.Modules.NetworkPrefabs;
 
 namespace BuyableShotgun
 {
@@ -24,7 +25,7 @@ namespace BuyableShotgun
     {
         private const string modGUID = "MegaPiggy.BuyableShotgun";
         private const string modName = "Buyable Shotgun";
-        private const string modVersion = "1.0.4";
+        private const string modVersion = "1.1.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -32,16 +33,21 @@ namespace BuyableShotgun
 
         private static ManualLogSource LoggerInstance => Instance.Logger;
 
-        public List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Concat(UnityEngine.Object.FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID)).ToList();
-        public Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun"));
-        public Item ShotgunClone { get; private set; }
+        public static List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Concat(UnityEngine.Object.FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID)).ToList();
+        public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun"));
+        public static Item ShotgunClone { get; private set; }
+        public static GameObject ShotgunObjectClone { get; private set; }
 
-        private ConfigEntry<int> ShotgunPriceConfig;
-        public int ShotgunPrice => ShotgunPriceConfig.Value;
+        private static ConfigEntry<int> ShotgunPriceConfig;
+        public static int ShotgunPrice => ShotgunPriceConfig.Value;
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
+            if (Instance == null)
+            {
+                DontDestroyOnLoad(this);
+                Instance = this;
+            }
             harmony.PatchAll();
             ShotgunPriceConfig = Config.Bind("Prices", "ShotgunPrice", 700, "Credits needed to buy shotgun");
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -50,7 +56,7 @@ namespace BuyableShotgun
             Logger.LogInfo($"Plugin {modName} is loaded with version {modVersion}!");
         }
 
-        private Item MakeNonScrap(int price)
+        private static Item MakeNonScrap(int price)
         {
             Item nonScrap = ScriptableObject.CreateInstance<Item>();
             DontDestroyOnLoad(nonScrap);
@@ -100,12 +106,16 @@ namespace BuyableShotgun
             return nonScrap;
         }
 
-        private void CloneNonScrap(Item original, Item clone, int price)
+        private static GameObject CloneNonScrap(Item original, Item clone, int price)
         {
-            DontDestroyOnLoad(original.spawnPrefab);
+            var prefab = NetworkPrefabs.CloneNetworkPrefab(original.spawnPrefab);
+            DontDestroyOnLoad(prefab);
             CopyFields(original, clone);
+            prefab.GetComponent<GrabbableObject>().itemProperties = clone;
+            clone.spawnPrefab = prefab;
             clone.name = "Buyable" + original.name;
             clone.creditsWorth = price;
+            return prefab;
         }
 
         public static void CopyFields(Item source, Item destination)
@@ -119,7 +129,7 @@ namespace BuyableShotgun
 
         private static Dictionary<string, TerminalNode> infoNodes = new Dictionary<string, TerminalNode>();
 
-        private TerminalNode CreateInfoNode(string name, string description)
+        private static TerminalNode CreateInfoNode(string name, string description)
         {
             if (infoNodes.ContainsKey(name)) return infoNodes[name];
             TerminalNode node = ScriptableObject.CreateInstance<TerminalNode>();
@@ -131,14 +141,15 @@ namespace BuyableShotgun
             return node;
         }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             LoggerInstance.LogInfo("Scene \"" + scene.name + "\" loaded with " + mode + " mode.");
             if (Shotgun == null) return;
-            CloneNonScrap(Shotgun, ShotgunClone, ShotgunPrice);
+            if (ShotgunObjectClone != null) return;
+            ShotgunObjectClone = CloneNonScrap(Shotgun, ShotgunClone, ShotgunPrice);
         }
 
-        private void AddToShop()
+        private static void AddToShop()
         {
             Items.RegisterShopItem(ShotgunClone, price: ShotgunPrice, itemInfo: CreateInfoNode("Shotgun", "Nutcracker's shotgun. Can hold 2 shells. Recommended to keep safety on while not using or it might shoot randomly."));
             LoggerInstance.LogInfo($"Shotgun added to Shop for {ShotgunPrice} credits");
