@@ -7,20 +7,12 @@ using UnityEngine;
 using LethalLib.Modules;
 using UnityEngine.SceneManagement;
 using BepInEx.Configuration;
-using Dissonance;
-using static UnityEngine.UI.Image;
 using Unity.Netcode;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using System;
-using Steamworks.Ugc;
 using NetworkPrefabs = LethalLib.Modules.NetworkPrefabs;
-using LethalLib;
 using Unity.Collections;
 using GameNetcodeStuff;
-using System.Runtime.CompilerServices;
-using Newtonsoft.Json.Linq;
 
 namespace BuyableShotgun
 {
