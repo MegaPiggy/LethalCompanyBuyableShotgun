@@ -1,6 +1,6 @@
 #### 1.2.0
 - Price now syncs between host and clients
-- Fixed problem were flags were set to hide and dont save
+- Fixed problem where flags were set to hide and dont save
 
 #### 1.1.0
 - Made the buyable shotgun its own prefab instead of just using vanilla one.
