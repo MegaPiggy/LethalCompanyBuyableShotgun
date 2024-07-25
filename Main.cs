@@ -147,6 +147,11 @@ namespace BuyableShotgun
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             LoggerInstance.LogInfo("Scene \"" + scene.name + "\" loaded with " + mode + " mode.");
+            CloneShotgun();
+        }
+
+        private static void CloneShotgun()
+        {
             if (Shotgun == null) return;
             if (ShotgunObjectClone != null) return;
             ShotgunObjectClone = CloneNonScrap(Shotgun, ShotgunClone, ShotgunPrice);
@@ -254,6 +259,14 @@ namespace BuyableShotgun
                     NetworkManager.Singleton.CustomMessagingManager.RegisterNamedMessageHandler("BuyableShotgun_OnReceiveConfigSync", OnReceiveSync);
                     NetworkManager.Singleton.CustomMessagingManager.SendNamedMessage("BuyableShotgun_OnRequestConfigSync", 0, new FastBufferWriter(0, Allocator.Temp), NetworkDelivery.Reliable);
                 }
+            }
+
+            [HarmonyPostfix]
+            [HarmonyPatch(typeof(GameNetworkManager), "Start")]
+            public static void Start()
+            {
+                LoggerInstance.LogWarning("Game network manager start");
+                CloneShotgun();
             }
 
             [HarmonyPostfix]
