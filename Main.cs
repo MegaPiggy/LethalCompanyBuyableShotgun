@@ -31,7 +31,7 @@ namespace BuyableShotgun
         private static ManualLogSource LoggerInstance => Instance.Logger;
 
         public static List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Concat(UnityEngine.Object.FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID)).ToList();
-        public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun"));
+        public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun") && item.spawnPrefab != null); // also check for spawn prefab because some mods add an extra without one for whatever reason
         public static Item ShotgunClone { get; private set; }
         public static GameObject ShotgunObjectClone { get; private set; }
 
