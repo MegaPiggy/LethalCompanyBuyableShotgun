@@ -252,6 +252,7 @@ namespace BuyableShotgun
                 {
                     LoggerInstance.LogInfo("Started hosting, using local settings");
                     NetworkManager.Singleton.CustomMessagingManager.RegisterNamedMessageHandler("BuyableShotgun_OnRequestConfigSync", OnRequestSync);
+                    UpdateShopItemPrice();
                 }
                 else
                 {
