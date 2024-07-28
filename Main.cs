@@ -30,7 +30,7 @@ namespace BuyableShotgun
 
         private static ManualLogSource LoggerInstance => Instance.Logger;
 
-        public static List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Concat(UnityEngine.Object.FindObjectsByType<Item>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID)).ToList();
+        public static List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Reverse().ToList();
         public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun") && item.spawnPrefab != null); // also check for spawn prefab because some mods add an extra without one for whatever reason
         public static Item ShotgunClone { get; private set; }
         public static GameObject ShotgunObjectClone { get; private set; }
@@ -147,7 +147,7 @@ namespace BuyableShotgun
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             LoggerInstance.LogInfo("Scene \"" + scene.name + "\" loaded with " + mode + " mode.");
-            CloneShotgun();
+            //CloneShotgun();
         }
 
         private static void CloneShotgun()
