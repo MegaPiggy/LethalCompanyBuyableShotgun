@@ -13,6 +13,7 @@ using System;
 using NetworkPrefabs = LethalLib.Modules.NetworkPrefabs;
 using Unity.Collections;
 using GameNetcodeStuff;
+using LethalLevelLoader;
 
 namespace BuyableShotgun
 {
@@ -30,11 +31,7 @@ namespace BuyableShotgun
 
         private static ManualLogSource LoggerInstance => Instance.Logger;
 
-        public static StartOfRound StartOfRound => StartOfRound.Instance;
-        public static List<Item> AllItems => StartOfRound.allItemsList.itemsList.ToList();
-        public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun") && item.spawnPrefab != null);
-        public static Item ShotgunClone { get; private set; }
-        public static GameObject ShotgunObjectClone { get; private set; }
+        public static ExtendedItem duplicateShotgunExtendedItem { get; private set; }
 
         private static ConfigEntry<int> ShotgunPriceConfig;
         public static int ShotgunPriceLocal => ShotgunPriceConfig.Value;
@@ -51,125 +48,29 @@ namespace BuyableShotgun
                 Instance = this;
             }
             harmony.PatchAll();
-            ShotgunPriceConfig = Config.Bind("Prices", "ShotgunPrice", 700, "Credits needed to buy shotgun");
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            ShotgunClone = MakeNonScrap(ShotgunPrice);
-            AddToShop();
+            LethalLevelLoader.Plugin.onBeforeSetup += RegisterDuplicateShotgun;
             Logger.LogInfo($"Plugin {modName} is loaded with version {modVersion}!");
         }
 
-        private static Item MakeNonScrap(int price)
+        private void RegisterDuplicateShotgun()
         {
-            Item nonScrap = ScriptableObject.CreateInstance<Item>();
-            DontDestroyOnLoad(nonScrap);
-            nonScrap.name = "Error";
-            nonScrap.itemName = "Error";
-            nonScrap.itemId = 6624;
-            nonScrap.isScrap = false;
-            nonScrap.creditsWorth = price;
-            nonScrap.canBeGrabbedBeforeGameStart = true;
-            nonScrap.automaticallySetUsingPower = false;
-            nonScrap.batteryUsage = 300;
-            nonScrap.canBeInspected = false;
-            nonScrap.isDefensiveWeapon = true;
-            nonScrap.saveItemVariable = true;
-            nonScrap.syncGrabFunction = false;
-            nonScrap.twoHandedAnimation = true;
-            nonScrap.verticalOffset = 0.25f;
-            var prefab = LethalLib.Modules.NetworkPrefabs.CreateNetworkPrefab("Cube");
-            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.SetParent(prefab.transform, false);
-            cube.GetComponent<MeshRenderer>().sharedMaterial.shader = Shader.Find("HDRP/Lit");
-            prefab.AddComponent<BoxCollider>().size = Vector3.one * 2;
-            prefab.AddComponent<AudioSource>();
-            var prop = prefab.AddComponent<PhysicsProp>();
-            prop.itemProperties = nonScrap;
-            prop.grabbable = true;
-            nonScrap.spawnPrefab = prefab;
-            prefab.tag = "PhysicsProp";
-            prefab.layer = LayerMask.NameToLayer("Props");
-            cube.layer = LayerMask.NameToLayer("Props");
-            try
-            {
-                GameObject scanNode = GameObject.Instantiate<GameObject>(Items.scanNodePrefab, prefab.transform);
-                scanNode.name = "ScanNode";
-                scanNode.transform.localPosition = new Vector3(0f, 0f, 0f);
-                scanNode.transform.localScale *= 2;
-                ScanNodeProperties properties = scanNode.GetComponent<ScanNodeProperties>();
-                properties.nodeType = 1;
-                properties.headerText = "Error";
-                properties.subText = $"A mod is incompatible with {modName}";
-            }
-            catch (Exception e)
-            {
-                LoggerInstance.LogError(e.ToString());
-            }
-            prefab.transform.localScale = Vector3.one / 2;
-            return nonScrap;
-        }
+            Item vanillaShotgunItem = OriginalContent.StartOfRound.allItemsList.itemsList.FirstOrDefault(item => item.name.Equals("Shotgun"));
+            Item duplicateShotgunItem = Instantiate(vanillaShotgunItem);
 
-        private static GameObject CloneNonScrap(Item original, Item clone, int price)
-        {
-            GameObject.Destroy(clone.spawnPrefab);
-            var prefab = NetworkPrefabs.CloneNetworkPrefab(original.spawnPrefab);
-            prefab.AddComponent<Unflagger>();
-            DontDestroyOnLoad(prefab);
-            CopyFields(original, clone);
-            prefab.GetComponent<GrabbableObject>().itemProperties = clone;
-            clone.spawnPrefab = prefab;
-            clone.name = "Buyable" + original.name;
-            clone.creditsWorth = price;
-            return prefab;
-        }
+            duplicateShotgunItem.isScrap = false;
 
-        public static void CopyFields(Item source, Item destination)
-        {
-            FieldInfo[] fields = typeof(Item).GetFields();
-            foreach (FieldInfo field in fields)
-            {
-                field.SetValue(destination, field.GetValue(source));
-            }
-        }
+            ExtendedMod newExtendedMod = ExtendedMod.Create("Buyable Shotgun", "MegaPiggy");
+            duplicateShotgunExtendedItem = ExtendedItem.Create(duplicateShotgunItem, newExtendedMod, ContentType.Custom);
+            duplicateShotgunExtendedItem.IsBuyableItem = true;
+            duplicateShotgunExtendedItem.CreditsWorth = ShotgunPrice;
+            duplicateShotgunExtendedItem.OverrideInfoNodeDescription = "Nutcracker's Shotgun. Can hold 2 shells. Recommended to keep safety on while not using or it might shoot randomly.";
 
-        private static Dictionary<string, TerminalNode> infoNodes = new Dictionary<string, TerminalNode>();
-
-        private static TerminalNode CreateInfoNode(string name, string description)
-        {
-            if (infoNodes.ContainsKey(name)) return infoNodes[name];
-            TerminalNode node = ScriptableObject.CreateInstance<TerminalNode>();
-            DontDestroyOnLoad(node);
-            node.clearPreviousText = true;
-            node.name = name + "InfoNode";
-            node.displayText = description + "\n\n";
-            infoNodes.Add(name, node);
-            return node;
-        }
-
-        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            LoggerInstance.LogInfo("Scene \"" + scene.name + "\" loaded with " + mode + " mode.");
-            //CloneShotgun();
-        }
-
-        private static void CloneShotgun()
-        {
-            if (StartOfRound == null) return;
-            if (AllItems == null) return;
-            if (Shotgun == null) return;
-            if (ShotgunObjectClone != null) return;
-            ShotgunObjectClone = CloneNonScrap(Shotgun, ShotgunClone, ShotgunPrice);
-        }
-
-        private static void AddToShop()
-        {
-            Items.RegisterShopItem(ShotgunClone, price: ShotgunPrice, itemInfo: CreateInfoNode("Shotgun", "Nutcracker's Shotgun. Can hold 2 shells. Recommended to keep safety on while not using or it might shoot randomly."));
-            LoggerInstance.LogInfo($"Shotgun added to Shop for {ShotgunPrice} credits");
+            PatchedContent.RegisterExtendedMod(newExtendedMod);
         }
 
         private static void UpdateShopItemPrice()
         {
-            ShotgunClone.creditsWorth = ShotgunPrice;
-            Items.UpdateShopItemPrice(ShotgunClone, price: ShotgunPrice);
+            duplicateShotgunExtendedItem.CreditsWorth = ShotgunPrice;
             LoggerInstance.LogInfo($"Shotgun price updated to {ShotgunPrice} credits");
         }
 
@@ -232,18 +133,6 @@ namespace BuyableShotgun
             }
         }
 
-        /// <summary>
-        /// For what ever reason the hide flags were set to HideAndDontSave, which caused it to not save obviously.
-        /// I'm not sure what sets and I don't want to bother finding out when a fix like this is so easy.
-        /// </summary>
-        internal class Unflagger : MonoBehaviour
-        {
-            public void Awake()
-            {
-                gameObject.hideFlags = HideFlags.None;
-            }
-        }
-
         [HarmonyPatch]
         internal static class Patches
         {
@@ -263,14 +152,6 @@ namespace BuyableShotgun
                     NetworkManager.Singleton.CustomMessagingManager.RegisterNamedMessageHandler("BuyableShotgun_OnReceiveConfigSync", OnReceiveSync);
                     NetworkManager.Singleton.CustomMessagingManager.SendNamedMessage("BuyableShotgun_OnRequestConfigSync", 0, new FastBufferWriter(0, Allocator.Temp), NetworkDelivery.Reliable);
                 }
-            }
-
-            [HarmonyPostfix]
-            [HarmonyPatch(typeof(StartOfRound), "Awake")]
-            public static void Awake()
-            {
-                LoggerInstance.LogWarning("Start of round awake");
-                CloneShotgun();
             }
 
             [HarmonyPostfix]
