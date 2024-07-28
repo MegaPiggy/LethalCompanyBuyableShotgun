@@ -1,6 +1,6 @@
 {
   "name": "BuyableShotgun",
-  "version_number": "1.2.1",
+  "version_number": "1.3.0",
   "website_url": "https://github.com/MegaPiggy/LethalCompanyBuyableShotgun",
   "description": "Adds shotguns to the store for 700 credits (Configurable)",
   "dependencies": [
