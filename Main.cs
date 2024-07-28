@@ -30,9 +30,11 @@ namespace BuyableShotgun
 
         private static ManualLogSource LoggerInstance => Instance.Logger;
 
-        public static List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Reverse().ToList();
-        public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun") && item.spawnPrefab != null); // also check for spawn prefab because some mods add an extra without one for whatever reason
-        public static ClonedItem ShotgunClone { get; private set; }
+        public static StartOfRound StartOfRound => StartOfRound.Instance;
+        public static List<Item> AllItems => StartOfRound.allItemsList.itemsList.ToList();
+        public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun") && item.spawnPrefab != null);
+        public static Item ShotgunClone { get; private set; }
+        public static GameObject ShotgunObjectClone { get; private set; }
 
         private static ConfigEntry<int> ShotgunPriceConfig;
         public static int ShotgunPriceLocal => ShotgunPriceConfig.Value;
@@ -100,6 +102,8 @@ namespace BuyableShotgun
 
         private static void CloneShotgun()
         {
+            if (StartOfRound == null) return;
+            if (AllItems == null) return;
             if (Shotgun == null) return;
             if (ShotgunClone != null) return;
             ShotgunClone = CloneNonScrap(Shotgun, ShotgunPrice);
@@ -212,10 +216,10 @@ namespace BuyableShotgun
             }
 
             [HarmonyPostfix]
-            [HarmonyPatch(typeof(GameNetworkManager), "Start")]
-            public static void Start()
+            [HarmonyPatch(typeof(StartOfRound), "Awake")]
+            public static void Awake()
             {
-                LoggerInstance.LogWarning("Game network manager start");
+                LoggerInstance.LogWarning("Start of round awake");
                 CloneShotgun();
             }
 
