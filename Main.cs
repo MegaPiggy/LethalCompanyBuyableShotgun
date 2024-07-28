@@ -32,7 +32,7 @@ namespace BuyableShotgun
 
         public static List<Item> AllItems => Resources.FindObjectsOfTypeAll<Item>().Reverse().ToList();
         public static Item Shotgun => AllItems.FirstOrDefault(item => item.name.Equals("Shotgun") && item.spawnPrefab != null); // also check for spawn prefab because some mods add an extra without one for whatever reason
-        public static Item ShotgunClone { get; private set; }
+        public static ClonedItem ShotgunClone { get; private set; }
         public static GameObject ShotgunObjectClone { get; private set; }
 
         private static ConfigEntry<int> ShotgunPriceConfig;
@@ -57,9 +57,14 @@ namespace BuyableShotgun
             Logger.LogInfo($"Plugin {modName} is loaded with version {modVersion}!");
         }
 
-        private static Item MakeNonScrap(int price)
+        public class ClonedItem : Item
         {
-            Item nonScrap = ScriptableObject.CreateInstance<Item>();
+            public Item original;
+        }
+
+        private static ClonedItem MakeNonScrap(int price)
+        {
+            ClonedItem nonScrap = ScriptableObject.CreateInstance<ClonedItem>();
             DontDestroyOnLoad(nonScrap);
             nonScrap.name = "Error";
             nonScrap.itemName = "Error";
@@ -107,9 +112,10 @@ namespace BuyableShotgun
             return nonScrap;
         }
 
-        private static GameObject CloneNonScrap(Item original, Item clone, int price)
+        private static GameObject CloneNonScrap(Item original, ClonedItem clone, int price)
         {
             GameObject.Destroy(clone.spawnPrefab);
+            clone.original = original;
             var prefab = NetworkPrefabs.CloneNetworkPrefab(original.spawnPrefab);
             prefab.AddComponent<Unflagger>();
             DontDestroyOnLoad(prefab);
