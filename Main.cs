@@ -17,6 +17,9 @@ using GameNetcodeStuff;
 namespace BuyableShotgun
 {
     [BepInDependency("evaisa.lethallib", "0.13.2")]
+    [BepInIncompatibility("firearmlicense")]
+    [BepInIncompatibility("Entity378.BuyableShotgunPlus")]
+    [BepInIncompatibility("Hypick.BetterShotgun")]
     [BepInPlugin(modGUID, modName, modVersion)]
     public class BuyableShotgun : BaseUnityPlugin
     {
