@@ -11,6 +11,7 @@
     <DebugType>portable</DebugType>
     <ModName>MegaPiggy-BuyableShotgun</ModName>
     <LethalCompanyDirectory>C:\Program Files (x86)\Steam\steamapps\common\Lethal Company</LethalCompanyDirectory>
+    <ManagedDirectory>$(LethalCompanyDirectory)\Lethal Company_Data\Managed</ManagedDirectory>
     <BepInExDirectory>$(LethalCompanyDirectory)\BepInEx</BepInExDirectory>
     <BepInExCoreDirectory>$(BepInExDirectory)\core</BepInExCoreDirectory>
     <BepInExPluginsDirectory>$(BepInExDirectory)\plugins</BepInExPluginsDirectory>
@@ -20,13 +21,13 @@
       <HintPath>$(BepInExCoreDirectory)\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="AmazingAssets.TerrainToMesh">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\AmazingAssets.TerrainToMesh.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\AmazingAssets.TerrainToMesh.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>$(BepInExCoreDirectory)\BepInEx.dll</HintPath>
@@ -38,22 +39,22 @@
       <HintPath>$(BepInExCoreDirectory)\BepInEx.Preloader.dll</HintPath>
     </Reference>
     <Reference Include="ClientNetworkTransform">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\ClientNetworkTransform.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\ClientNetworkTransform.dll</HintPath>
     </Reference>
     <Reference Include="DissonanceVoip">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\DissonanceVoip.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\DissonanceVoip.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch Transport for Netcode for GameObjects">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Facepunch Transport for Netcode for GameObjects.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Facepunch Transport for Netcode for GameObjects.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.Steamworks.Win64">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Facepunch.Steamworks.Win64.dll</HintPath>
     </Reference>
     <Reference Include="HarmonyXInterop">
       <HintPath>$(BepInExCoreDirectory)\HarmonyXInterop.dll</HintPath>
     </Reference>
     <Reference Include="LethalLib">
-      <HintPath>..\..\..\AppData\Roaming\r2modmanPlus-local\LethalCompany\profiles\MegaPiggy\BepInEx\plugins\Evaisa-LethalLib\LethalLib\LethalLib.dll</HintPath>
+      <HintPath>$(AppData)\r2modmanPlus-local\LethalCompany\profiles\MegaPiggy\BepInEx\plugins\Evaisa-LethalLib\LethalLib\LethalLib.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>$(BepInExCoreDirectory)\Mono.Cecil.dll</HintPath>
@@ -68,7 +69,7 @@
       <HintPath>$(BepInExCoreDirectory)\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Mono.Security.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
       <HintPath>$(BepInExCoreDirectory)\MonoMod.RuntimeDetour.dll</HintPath>
@@ -77,27 +78,16 @@
       <HintPath>$(BepInExCoreDirectory)\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\netstandard.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\netstandard.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel.Internals">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\System.ServiceModel.Internals.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\System.ServiceModel.Internals.dll</HintPath>
     </Reference>
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -105,367 +95,367 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Unity.AI.Navigation">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.AI.Navigation.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Animation.Rigging">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Animation.Rigging.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Animation.Rigging.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Animation.Rigging.DocCodeExamples">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Animation.Rigging.DocCodeExamples.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Animation.Rigging.DocCodeExamples.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Burst.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Collections.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.InputSystem.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.InputSystem.ForUI.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.InputSystem.ForUI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Jobs.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Mathematics.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.Common">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.Common.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.MetricTypes">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.MetricTypes.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.MetricTypes.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStats">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetStats.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetStats.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Component">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetStatsMonitor.Component.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetStatsMonitor.Component.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Configuration">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetStatsMonitor.Configuration.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetStatsMonitor.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Implementation">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetStatsMonitor.Implementation.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetStatsMonitor.Implementation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetStatsReporting">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetStatsReporting.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetStatsReporting.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetworkProfiler.Runtime">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Tools.NetworkSolutionInterface">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Multiplayer.Tools.NetworkSolutionInterface.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Multiplayer.Tools.NetworkSolutionInterface.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Netcode.Components">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Netcode.Components.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Netcode.Components.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Netcode.Runtime">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Netcode.Runtime.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Netcode.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Networking.Transport">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Networking.Transport.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Networking.Transport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.ProBuilder.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.ProBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Csg">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.ProBuilder.Csg.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.ProBuilder.Csg.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.KdTree">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.ProBuilder.KdTree.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.ProBuilder.KdTree.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Poly2Tri">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.ProBuilder.Poly2Tri.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.ProBuilder.Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Stl">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.ProBuilder.Stl.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.ProBuilder.Stl.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Profiling.Core">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Profiling.Core.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Profiling.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Authentication">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Authentication.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Analytics.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Configuration">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Configuration.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Device">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Device.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Device.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Environments.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Environments.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments.Internal">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Environments.Internal.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Environments.Internal.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Internal">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Internal.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Internal.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Networking">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Networking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Registration">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Registration.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Registration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Scheduler">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Scheduler.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Telemetry">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Telemetry.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Telemetry.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Threading">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Core.Threading.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Core.Threading.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.QoS">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.QoS.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.QoS.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Relay">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Services.Relay.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Services.Relay.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.Timeline.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualEffectGraph.Runtime">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.AIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AndroidJNIModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.AndroidJNIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ARModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ARModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClothModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ClothModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ClusterInputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ClusterRendererModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ContentLoadModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ContentLoadModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ContentLoadModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.CrashReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.DirectorModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DSPGraphModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.DSPGraphModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.GameCenterModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GIModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.GIModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.GIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GridModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.GridModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HotReloadModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.HotReloadModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.LocalizationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.NVIDIAModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.NVIDIAModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.PerformanceReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ProfilerModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ProfilerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PropertiesModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.PropertiesModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.PropertiesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.SpriteMaskModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteShapeModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.SpriteShapeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StreamingModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.StreamingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubstanceModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.SubstanceModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubsystemsModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.SubsystemsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreFontEngineModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreTextEngineModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TLSModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.TLSModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UmbraModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityCurlModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityCurlModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityCurlModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityTestProtocolModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityTestProtocolModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VFXModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VideoModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.VideoModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VirtualTexturingModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.VirtualTexturingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VRModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.VRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.WindModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.WindModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XRModule">
-      <HintPath>$(LethalCompanyDirectory)\Lethal Company_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>$(ManagedDirectory)\UnityEngine.XRModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -478,7 +468,7 @@
     <None Include="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="CHANGELOG.md">
+    <None Include="CHANGELOG.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
